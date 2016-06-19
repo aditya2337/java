@@ -25,6 +25,7 @@ public class Car {
     double mpg = 26.4;
     
     int numberofPeopleInCar = 1;
+    int maxNumberofPeopleInCar = 6;
     
     public Car(){
         
@@ -51,17 +52,33 @@ public class Car {
         maxSpeed = maxSpeed - 1;
     }
     
-    public void getIn(int numberofPeopleToGetIn) {
-        if( numberofPeopleInCar != 0){
-            for( int i = 1; i <= numberofPeopleToGetIn; i++){
-                numberofPeopleInCar--;
-            }
-           // System.out.println(numberofPeopleInCar);
-        }
-    }
-    
     public void getOut(int numberofPeopleToGetOut) {
         
+        for( int i = 1; i <= numberofPeopleToGetOut; i++){
+            if( numberofPeopleInCar > 0){
+            numberofPeopleInCar--;
+            }
+        }
+        System.out.println(numberofPeopleInCar);
+    }
+    
+    public void getIn(int numberofPeopleToGetIn) {
+       
+        for(int i = 1; i < numberofPeopleToGetIn; i++) {
+            if(numberofPeopleInCar < maxNumberofPeopleInCar) {
+                numberofPeopleInCar++;
+            } else {
+                System.out.println( "The car is full! " + numberofPeopleInCar + " = " + maxNumberofPeopleInCar);
+                break;
+            }                
+        }
+        if(numberofPeopleInCar < maxNumberofPeopleInCar) {
+            if( numberofPeopleToGetIn > 1 ){
+                System.out.println( numberofPeopleToGetIn + " people got in.");
+            } else {
+                System.out.println( numberofPeopleToGetIn + " person got in.");
+            }
+        }
     }
     
     public double howManyMilesTillOutfGas() {
@@ -84,7 +101,7 @@ public class Car {
     public static void main(String[] args) {
         // TODO code application logic here
         Car checkCar = new Car();
-        checkCar.getIn(1);
+        checkCar.getOut(11);
     }
     
 }
