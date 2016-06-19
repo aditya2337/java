@@ -56,10 +56,12 @@ public class Car {
         
         for( int i = 1; i <= numberofPeopleToGetOut; i++){
             if( numberofPeopleInCar > 0){
-            numberofPeopleInCar--;
-            }
+                numberofPeopleInCar--;
+            } else {
+                System.out.println("No one os in the Car!");
+                break;
+            } 
         }
-        System.out.println(numberofPeopleInCar);
     }
     
     public void getIn(int numberofPeopleToGetIn) {
@@ -92,6 +94,8 @@ public class Car {
     public void turnTheCarOn() {
         if( !isTheCarOn) {
             isTheCarOn = true;
+        } else {
+            System.out.println("The car is already on!" + isTheCarOn);
         }
     }
 
